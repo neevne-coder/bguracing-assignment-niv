@@ -1,0 +1,16 @@
+services:
+  publisher:
+    build: ./publisher
+    environment:
+      - ROS_DOMAIN_ID=42
+    volumes:
+      - ./data:/data:ro
+
+  processor:
+    build: ./processor
+    environment:
+      - ROS_DOMAIN_ID=42
+    volumes:
+      - ./output:/output
+    depends_on:
+      - publisher

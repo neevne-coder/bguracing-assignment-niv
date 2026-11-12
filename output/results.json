@@ -1,0 +1,10 @@
+{
+  "path_length_m": 3896.9,
+  "lap_time_s": 132.3,
+  "max_speed_kmh": 108.0,
+  "min_speed_kmh": 54.3,
+  "max_abs_curvature_1_per_m": 0.0527,
+  "mean_track_width_m": 27.6,
+  "a_lat": 12.0,
+  "v_top": 30.0
+}

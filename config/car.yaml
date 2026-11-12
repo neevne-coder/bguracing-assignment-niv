@@ -1,0 +1,11 @@
+# Car settings. Values marked (ASSUMED) are placeholders - replace with the team's real numbers.
+car:
+  max_speed_kmh: 110    # top speed (ASSUMED)
+  max_accel: 5.0        # strongest acceleration, m/s^2 (ASSUMED, can be taken from the 0-100 km/h time)
+  max_brake: 12.0       # strongest braking, m/s^2 (ASSUMED)
+tire:
+  compound: medium      # soft | medium | hard | wet
+track:
+  surface: dry          # dry | wet
+line:
+  margin_m: 1.0         # distance kept from the track edges

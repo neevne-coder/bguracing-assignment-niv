@@ -5,6 +5,7 @@ services:
       - ROS_DOMAIN_ID=42
     volumes:
       - ./data:/data:ro
+      - ./config:/config:ro
 
   processor:
     build: ./processor

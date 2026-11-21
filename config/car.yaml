@@ -3,6 +3,7 @@ car:
   max_speed_kmh: 110    # top speed (ASSUMED)
   max_accel: 5.0        # strongest acceleration, m/s^2 (ASSUMED, can be taken from the 0-100 km/h time)
   max_brake: 12.0       # strongest braking, m/s^2 (ASSUMED)
+  hold_throttle_at_top_pct: 90   # throttle needed to hold top speed; scales linearly with speed (ASSUMED)
 tire:
   compound: medium      # soft | medium | hard | wet
 track:

@@ -2,7 +2,6 @@ import numpy as np
 from scipy.spatial import cKDTree
 
 G = 9.81  # gravity, m/s^2
-G = 9.81  # gravity, m/s^2
 
 # Grip (friction coefficient) of every tire on a dry and on a wet surface (ASSUMED values)
 TIRE_GRIP = {
@@ -105,8 +104,19 @@ def speed_profile(points, car, grip):
 def pedal_commands(speed, distance, car):
     """Throttle and brake (0-100 %) needed to follow the speed profile."""
     accel = (np.roll(speed, -1) ** 2 - speed ** 2) / (2 * distance)  # m/s^2 along the line
-    throttle = np.clip(accel / car["max_accel"], 0, 1) * 100
-    brake = np.clip(-accel / car["max_brake"], 0, 1) * 100
+
+    # Throttle needed just to hold the current speed. It grows linearly with speed
+    # (a simple stand-in for air drag and rolling resistance, which the model does not have).
+    hold = car["hold_throttle_at_top_pct"] * speed / (car["max_speed_kmh"] / 3.6)
+
+    # When speeding up, the throttle goes from the holding level up to 100 %
+    speeding_up = np.clip(accel / car["max_accel"], 0, 1)
+    throttle = hold + (100 - hold) * speeding_up
+
+    # When slowing down clearly (more than 0.05 m/s^2), the driver brakes and lifts off the throttle
+    braking = accel < -0.05
+    throttle = np.where(braking, 0, throttle)
+    brake = np.where(braking, np.clip(-accel / car["max_brake"], 0, 1) * 100, 0)
     return throttle, brake
 
 

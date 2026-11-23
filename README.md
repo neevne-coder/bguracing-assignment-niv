@@ -194,3 +194,12 @@ Stop and clean up with `docker compose down`.
 
 Python, NumPy, SciPy, Matplotlib, ROS 2 Jazzy, Docker. 
 During development' I used LLM's (Claude\Gemini) for assistance to brainstorm the ROS 2 architecture, get thechnical explanations and drafts of standard code.
+
+
+## 12. Run
+
+Update parameters and run program -
+docker compose up --abort-on-container-exit
+
+after finished - 
+docker compose down

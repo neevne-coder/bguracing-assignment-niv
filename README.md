@@ -198,6 +198,9 @@ During development' I used LLM's (Claude\Gemini) for assistance to brainstorm th
 
 ## 12. Run
 
+first run
+docker compose up --build --abort-on-container-exit
+
 Update parameters and run program -
 docker compose up --abort-on-container-exit
 
